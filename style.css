@@ -15,29 +15,30 @@ body {
 
 /* SECTION */
 .cards-section {
-    width: 90%;
-    max-width: 1200px;
+    width: 95%;
+    max-width: 1400px;
     text-align: center;
     color: white;
+    margin-top: -20px; /* 🔥 My Services thoda upar */
 }
 
 .cards-section h1 {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
     font-size: 2.5rem;
 }
 
-/* GRID */
+/* GRID – RESPONSIVE SAFE */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 }
 
 /* CARD */
 .card {
     background: white;
     color: #333;
-    padding: 70px 25px 30px;
+    padding: 90px 25px 30px;
     border-radius: 22px;
     box-shadow: 0 20px 45px rgba(0,0,0,0.35);
     transition: 0.4s ease;
@@ -45,24 +46,20 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 35px 70px rgba(0,0,0,0.45);
+    transform: translateY(-12px);
 }
 
-/* IMAGE */
+/* IMAGE (DESKTOP & TABLET) */
 .img-wrapper {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     position: absolute;
-    top: -65px;
+    top: -60px;
     left: 50%;
     transform: translateX(-50%);
     background: linear-gradient(135deg, #5F27CD, #341F97);
     padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .img-wrapper img {
@@ -80,9 +77,9 @@ body {
 }
 
 .card p {
-    font-size: 15px;
+    font-size: 14px;
     color: #555;
-    margin: 15px 0 22px;
+    margin: 15px 0 20px;
 }
 
 /* BUTTON */
@@ -90,12 +87,34 @@ body {
     background: linear-gradient(135deg, #5F27CD, #341F97);
     border: none;
     color: white;
-    padding: 10px 24px;
+    padding: 10px 22px;
     border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.card button:hover {
-    transform: scale(1.1);
+/* 💻 LAPTOP HALF / TABLET */
+@media (max-width: 1200px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 📱 MOBILE – OVERLAP FIX */
+@media (max-width: 600px) {
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding-top: 40px; /* 🔥 image ke liye safe space */
+    }
+
+    .img-wrapper {
+        position: relative;   /* 🔥 absolute hata diya */
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 15px;
+    }
 }
